@@ -1,0 +1,168 @@
+<ns0:project xmlns:ns0="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <ns0:modelVersion>4.0.0</ns0:modelVersion>
+
+<ns0:groupId>org.example</ns0:groupId>
+  <ns0:artifactId>jpademo</ns0:artifactId>
+  <ns0:version>ci_randd_vcard_SNAPSHOT</ns0:version>
+  <ns0:packaging>jar</ns0:packaging>
+
+  <ns0:scm>
+      <ns0:connection>scm:git:ssh://my.git.server.internal/home/git/jpademo</ns0:connection>
+      <ns0:developerConnection>scm:git:ssh://my.git.server.internal/home/git/jpademo</ns0:developerConnection>
+  </ns0:scm>
+  <ns0:ciManagement>
+      <ns0:system>jenkins</ns0:system>
+      <ns0:url>https://my.jenkins.internal/jenkins</ns0:url>
+  </ns0:ciManagement>
+
+
+  <ns0:name>jpademo</ns0:name>
+  <ns0:url>http://maven.apache.org</ns0:url>
+    <ns0:build>
+        <ns0:plugins>
+            <ns0:plugin>
+                <ns0:groupId>org.apache.maven.plugins</ns0:groupId>
+                <ns0:artifactId>maven-compiler-plugin</ns0:artifactId>
+                <ns0:version>2.3.2</ns0:version>
+                <ns0:configuration>
+                    <ns0:source>1.6</ns0:source>
+                    <ns0:target>1.6</ns0:target>
+                </ns0:configuration>
+            </ns0:plugin>
+
+            <ns0:plugin>
+                <ns0:groupId>org.apache.maven.plugins</ns0:groupId>
+                <ns0:artifactId>maven-jar-plugin</ns0:artifactId>
+                <ns0:version>2.2</ns0:version>
+                <ns0:executions>
+                    <ns0:execution>
+                        <ns0:goals>
+                            <ns0:goal>jar</ns0:goal>
+                        </ns0:goals>
+                        <ns0:id>jar</ns0:id>
+                    </ns0:execution>
+                </ns0:executions>
+                <ns0:configuration>
+                      <ns0:archive>
+                        <ns0:manifestFile>src/main/resources/Manifest.txt</ns0:manifestFile>
+                        <ns0:manifest>
+                          <ns0:addClasspath>true</ns0:addClasspath>
+
+                          <ns0:mainClass>com.footballradar.jpademo.App</ns0:mainClass>
+
+                        </ns0:manifest>
+                      </ns0:archive>
+                </ns0:configuration>
+            </ns0:plugin>
+            <ns0:plugin>
+                <ns0:groupId>org.apache.maven.plugins</ns0:groupId>
+                <ns0:artifactId>maven-shade-plugin</ns0:artifactId>
+                <ns0:version>1.4</ns0:version>
+                    <ns0:executions>
+                        <ns0:execution>
+                                <ns0:phase>package</ns0:phase>
+                                <ns0:goals>
+                                        <ns0:goal>shade</ns0:goal>
+                                </ns0:goals>
+                        </ns0:execution>
+                    </ns0:executions>
+                    <ns0:configuration>
+                            <ns0:finalName>${project.artifactId}-${project.version}</ns0:finalName>
+                    </ns0:configuration>
+            </ns0:plugin>
+
+        </ns0:plugins>
+
+    </ns0:build>
+
+    <ns0:repositories>
+    <ns0:repository>
+      <ns0:url>http://download.java.net/maven/2/</ns0:url>
+      <ns0:id>hibernate-support</ns0:id>
+      <ns0:layout>default</ns0:layout>
+      <ns0:name>Repository for library Library[hibernate-support]</ns0:name>
+    </ns0:repository>
+  </ns0:repositories>
+
+
+
+  <ns0:properties>
+    <ns0:project.build.sourceEncoding>UTF-8</ns0:project.build.sourceEncoding>
+  </ns0:properties>
+
+  <ns0:dependencies>
+    <ns0:dependency>
+      <ns0:groupId>junit</ns0:groupId>
+      <ns0:artifactId>junit</ns0:artifactId>
+      <ns0:version>3.8.1</ns0:version>
+      <ns0:scope>test</ns0:scope>
+    </ns0:dependency>
+    <ns0:dependency>
+      <ns0:groupId>org.hibernate</ns0:groupId>
+      <ns0:artifactId>hibernate-core</ns0:artifactId>
+      <ns0:version>3.6.3.Final</ns0:version>
+    </ns0:dependency>
+    <ns0:dependency>
+      <ns0:groupId>org.hibernate</ns0:groupId>
+      <ns0:artifactId>hibernate</ns0:artifactId>
+      <ns0:version>3.2.5.ga</ns0:version>
+    </ns0:dependency>
+    <ns0:dependency>
+      <ns0:groupId>org.hibernate</ns0:groupId>
+      <ns0:artifactId>hibernate-entitymanager</ns0:artifactId>
+      <ns0:version>3.3.2.GA</ns0:version>
+    </ns0:dependency>
+    <ns0:dependency>
+      <ns0:groupId>javax.sql</ns0:groupId>
+      <ns0:artifactId>jdbc-stdext</ns0:artifactId>
+      <ns0:version>2.0</ns0:version>
+    </ns0:dependency>
+    <ns0:dependency>
+      <ns0:groupId>javax.transaction</ns0:groupId>
+      <ns0:artifactId>jta</ns0:artifactId>
+      <ns0:version>1.0.1B</ns0:version>
+    </ns0:dependency>
+      <ns0:dependency>
+          <ns0:groupId>org.hibernate</ns0:groupId>
+          <ns0:artifactId>ejb3-persistence</ns0:artifactId>
+          <ns0:version>1.0.1.GA</ns0:version>
+      </ns0:dependency>
+      <ns0:dependency>
+          <ns0:groupId>mysql</ns0:groupId>
+          <ns0:artifactId>mysql-connector-java</ns0:artifactId>
+          <ns0:version>5.1.14</ns0:version>
+      </ns0:dependency>
+      <ns0:dependency>
+          <ns0:artifactId>slf4j-api</ns0:artifactId>
+          <ns0:groupId>org.slf4j</ns0:groupId>
+          <ns0:type>jar</ns0:type>
+          <ns0:version>1.6.1</ns0:version>
+      </ns0:dependency>
+      <ns0:dependency>
+          <ns0:groupId>org.slf4j</ns0:groupId>
+          <ns0:artifactId>log4j-over-slf4j</ns0:artifactId>
+          <ns0:version>1.6.1</ns0:version>
+      </ns0:dependency>
+      <ns0:dependency>
+          <ns0:groupId>org.slf4j</ns0:groupId>
+          <ns0:artifactId>slf4j-simple</ns0:artifactId>
+          <ns0:version>1.6.1</ns0:version>
+      </ns0:dependency>
+  </ns0:dependencies>
+
+ <ns0:distributionManagement>
+    <ns0:repository>
+        <ns0:id>My_Artifactory_Releases</ns0:id>
+        <ns0:name>My_Artifactory-releases</ns0:name>
+        <ns0:url>http://my.maven.repository.internal/artifactory/release</ns0:url>
+    </ns0:repository>
+
+    <ns0:snapshotRepository>
+        <ns0:id>My_Artifactory_Snapshots</ns0:id>
+        <ns0:name>My_Artifactory-snapshots</ns0:name>
+        <ns0:url>http://my.maven.repository.internal/artifactory/snapshot</ns0:url>
+    </ns0:snapshotRepository>
+
+</ns0:distributionManagement>
+
+</ns0:project>
