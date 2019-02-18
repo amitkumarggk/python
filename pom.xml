@@ -3,7 +3,7 @@
 
 <ns0:groupId>org.example</ns0:groupId>
   <ns0:artifactId>jpademo</ns0:artifactId>
-  <ns0:version>ci_randd_vcard_SNAPSHOT</ns0:version>
+  <ns0:version>ci_org_repo_SNAPSHOT</ns0:version>
   <ns0:packaging>jar</ns0:packaging>
 
   <ns0:scm>
