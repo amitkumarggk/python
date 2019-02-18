@@ -1,1 +1,14 @@
 
+steps:
+
+1. get the repo:
+   #git clone the repo
+
+2. build the docker image:
+   #docker build -t pomparseedit .
+ 
+3. run the docker container:
+   #docker run -i -t -d --name=pomparseedit pomparseedit
+
+4. Test the logs:
+   #docker logs pomparseedit
